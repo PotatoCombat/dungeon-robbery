@@ -1,0 +1,521 @@
+[gd_scene load_steps=34 format=2]
+
+[ext_resource path="res://panel_blue.png" type="Texture" id=1]
+[ext_resource path="res://CardSlot.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Battle.gd" type="Script" id=3]
+[ext_resource path="res://Stan.png" type="Texture" id=4]
+[ext_resource path="res://Slime1_1.png" type="Texture" id=5]
+[ext_resource path="res://Enemy.gd" type="Script" id=6]
+[ext_resource path="res://Player.gd" type="Script" id=7]
+[ext_resource path="res://Intent.gd" type="Script" id=9]
+[ext_resource path="res://AlteHaasGroteskBold.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://Stats.gd" type="Script" id=11]
+[ext_resource path="res://Hand.gd" type="Script" id=12]
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 192, 192, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 192, 288, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 192, 384, 96, 96 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=20]
+resource_name = "attack"
+length = 20.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 9, 10, 11, 12, 13 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "attack", "attack" ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 0, 128, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 128, 128, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=23]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 256, 128, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=24]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 384, 128, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=25]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 512, 128, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=26]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 640, 128, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 128, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 256, 0, 128, 128 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ) ],
+"loop": true,
+"name": "attack",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="StyleBoxFlat" id=28]
+bg_color = Color( 0.835294, 0.105882, 0.105882, 0.266667 )
+
+[sub_resource type="StyleBoxEmpty" id=30]
+
+[sub_resource type="StyleBoxEmpty" id=31]
+
+[sub_resource type="StyleBoxEmpty" id=32]
+
+[sub_resource type="StyleBoxEmpty" id=29]
+
+[sub_resource type="Animation" id=33]
+resource_name = "attack"
+length = 20.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 9, 10, 11, 12, 13 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "attack", "attack" ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+
+[sub_resource type="DynamicFont" id=27]
+size = 32
+use_filter = true
+font_data = ExtResource( 10 )
+
+[node name="Battle" type="Node"]
+script = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Player" type="Node2D" parent="."]
+position = Vector2( 398, 354 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
+position = Vector2( 0, -64 )
+frames = SubResource( 8 )
+frame = 2
+speed_scale = 0.5
+playing = true
+
+[node name="BlockBar" type="Label" parent="Player"]
+margin_left = -72.0
+margin_top = -8.0
+margin_right = -33.0
+margin_bottom = 15.0
+custom_colors/font_color = Color( 0.0313726, 0.717647, 1, 1 )
+text = "999"
+align = 1
+valign = 1
+
+[node name="HealthBar" type="Label" parent="Player"]
+margin_left = -34.0
+margin_top = -4.0
+margin_right = 35.0
+margin_bottom = 10.0
+text = "9999/9999"
+align = 1
+valign = 1
+
+[node name="Slime" type="Node2D" parent="."]
+position = Vector2( 809, 340 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Slime"]
+anims/attack = SubResource( 20 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Slime"]
+position = Vector2( 0, -64 )
+frames = SubResource( 4 )
+animation = "attack"
+
+[node name="Target" type="Button" parent="Slime"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -72.0
+margin_top = -128.0
+margin_right = 72.0
+margin_bottom = 16.0
+custom_styles/hover = SubResource( 28 )
+custom_styles/pressed = SubResource( 30 )
+custom_styles/focus = SubResource( 31 )
+custom_styles/disabled = SubResource( 32 )
+custom_styles/normal = SubResource( 29 )
+
+[node name="Intent" type="Label" parent="Slime"]
+margin_left = -64.0
+margin_top = -96.0
+margin_right = 64.0
+margin_bottom = -80.0
+text = "< 999"
+align = 1
+valign = 1
+script = ExtResource( 9 )
+
+[node name="Stats" type="Node2D" parent="Slime"]
+script = ExtResource( 11 )
+
+[node name="BlockBar" type="Label" parent="Slime/Stats"]
+margin_left = -88.0
+margin_top = 8.0
+margin_right = -40.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 24, 8 )
+custom_colors/font_color = Color( 0.0313726, 0.717647, 1, 1 )
+text = "999"
+align = 1
+valign = 1
+
+[node name="HealthBar" type="Label" parent="Slime/Stats"]
+margin_left = -64.0
+margin_top = 8.0
+margin_right = 64.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 16 )
+text = "9999/9999"
+align = 1
+valign = 1
+
+[node name="Slime2" type="Node2D" parent="."]
+position = Vector2( 979, 338 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Slime2"]
+anims/attack = SubResource( 33 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Slime2"]
+position = Vector2( 0, -64 )
+frames = SubResource( 4 )
+animation = "attack"
+
+[node name="Target" type="Button" parent="Slime2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -72.0
+margin_top = -128.0
+margin_right = 72.0
+margin_bottom = 16.0
+custom_styles/hover = SubResource( 28 )
+custom_styles/pressed = SubResource( 30 )
+custom_styles/focus = SubResource( 31 )
+custom_styles/disabled = SubResource( 32 )
+custom_styles/normal = SubResource( 29 )
+
+[node name="Intent" type="Label" parent="Slime2"]
+margin_left = -64.0
+margin_top = -96.0
+margin_right = 64.0
+margin_bottom = -80.0
+text = "< 999"
+align = 1
+valign = 1
+script = ExtResource( 9 )
+
+[node name="Stats" type="Node2D" parent="Slime2"]
+script = ExtResource( 11 )
+
+[node name="BlockBar" type="Label" parent="Slime2/Stats"]
+margin_left = -88.0
+margin_top = 8.0
+margin_right = -40.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 24, 8 )
+custom_colors/font_color = Color( 0.0313726, 0.717647, 1, 1 )
+text = "999"
+align = 1
+valign = 1
+
+[node name="HealthBar" type="Label" parent="Slime2/Stats"]
+margin_left = -64.0
+margin_top = 8.0
+margin_right = 64.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 16 )
+text = "9999/9999"
+align = 1
+valign = 1
+
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Toolbar" type="NinePatchRect" parent="UI"]
+anchor_right = 1.0
+margin_bottom = 48.0
+texture = ExtResource( 1 )
+patch_margin_left = 40
+patch_margin_right = 40
+
+[node name="Relics" type="HBoxContainer" parent="UI"]
+anchor_right = 1.0
+margin_top = 51.0
+margin_bottom = 99.0
+
+[node name="Relic1" type="Button" parent="UI/Relics"]
+margin_right = 48.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+text = "Obj"
+
+[node name="Relic2" type="Button" parent="UI/Relics"]
+margin_left = 52.0
+margin_right = 100.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+text = "Obj"
+
+[node name="Relic3" type="Button" parent="UI/Relics"]
+margin_left = 104.0
+margin_right = 152.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+text = "Obj"
+
+[node name="Relic4" type="Button" parent="UI/Relics"]
+margin_left = 156.0
+margin_right = 204.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+text = "Obj"
+
+[node name="Relic5" type="Button" parent="UI/Relics"]
+margin_left = 208.0
+margin_right = 256.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+text = "Obj"
+
+[node name="Relic6" type="Button" parent="UI/Relics"]
+margin_left = 260.0
+margin_right = 308.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+text = "Obj"
+
+[node name="Banner" type="Label" parent="UI"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -230.0
+margin_bottom = -191.0
+custom_colors/font_outline_modulate = Color( 0.807843, 0.105882, 0.105882, 1 )
+custom_fonts/font = SubResource( 27 )
+text = "DEAD"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Energy" type="Label" parent="UI"]
+margin_left = 38.0
+margin_top = 511.0
+margin_right = 92.0
+margin_bottom = 565.0
+text = "5/5"
+align = 1
+valign = 1
+
+[node name="EndTurnBtn" type="Button" parent="UI"]
+margin_left = 1101.0
+margin_top = 552.0
+margin_right = 1205.0
+margin_bottom = 577.0
+text = "End Turn"
+
+[node name="Hand" type="Control" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+script = ExtResource( 12 )
+
+[node name="DropZone" type="ReferenceRect" parent="UI/Hand"]
+margin_top = 160.0
+margin_right = 1280.0
+margin_bottom = 460.0
+border_color = Color( 0.392157, 0.705882, 0.176471, 1 )
+editor_only = false
+
+[node name="CancelZone" type="ReferenceRect" parent="UI/Hand"]
+margin_top = 675.0
+margin_right = 1280.0
+margin_bottom = 725.0
+rect_min_size = Vector2( 1280, 45 )
+border_color = Color( 0.705882, 0.176471, 0.176471, 1 )
+editor_only = false
+
+[node name="Cards" type="HBoxContainer" parent="UI/Hand"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -235.0
+margin_bottom = 5.0
+custom_constants/separation = -80
+alignment = 1
+
+[node name="Slot-0" parent="UI/Hand/Cards" instance=ExtResource( 2 )]
+margin_left = 100.0
+margin_right = 280.0
+
+[node name="Slot-1" parent="UI/Hand/Cards" instance=ExtResource( 2 )]
+margin_left = 200.0
+margin_right = 380.0
+
+[node name="Slot-2" parent="UI/Hand/Cards" instance=ExtResource( 2 )]
+margin_left = 300.0
+margin_right = 480.0
+
+[node name="Slot-3" parent="UI/Hand/Cards" instance=ExtResource( 2 )]
+margin_left = 400.0
+margin_right = 580.0
+
+[node name="Slot-4" parent="UI/Hand/Cards" instance=ExtResource( 2 )]
+margin_left = 500.0
+margin_right = 680.0
+
+[node name="Slot-5" parent="UI/Hand/Cards" instance=ExtResource( 2 )]
+margin_left = 600.0
+margin_right = 780.0
+
+[node name="Slot-6" parent="UI/Hand/Cards" instance=ExtResource( 2 )]
+margin_left = 700.0
+margin_right = 880.0
+
+[node name="Slot-7" parent="UI/Hand/Cards" instance=ExtResource( 2 )]
+margin_left = 800.0
+margin_right = 980.0
+
+[node name="Slot-8" parent="UI/Hand/Cards" instance=ExtResource( 2 )]
+margin_left = 900.0
+margin_right = 1080.0
+
+[node name="Slot-9" parent="UI/Hand/Cards" instance=ExtResource( 2 )]
+margin_left = 1000.0
+margin_right = 1180.0
+
+[node name="Line2D" type="Line2D" parent="UI/Hand"]
+z_index = 10
+points = PoolVector2Array( 640, 605, 640, 605 )
+
+[connection signal="pressed" from="UI/Relics/Relic1" to="." method="_on_Relic1_pressed"]
+[connection signal="pressed" from="UI/EndTurnBtn" to="." method="_on_EndTurnBtn_pressed"]
