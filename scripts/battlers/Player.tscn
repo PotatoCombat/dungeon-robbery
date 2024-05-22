@@ -1,0 +1,159 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scripts/battlers/Player.gd" type="Script" id=1]
+[ext_resource path="res://images/misc/icon.png" type="Texture" id=2]
+[ext_resource path="res://scripts/battlers/components/Intent.gd" type="Script" id=3]
+[ext_resource path="res://scripts/battlers/components/Stats.gd" type="Script" id=4]
+[ext_resource path="res://scripts/actors/Actor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://images/battlers/Stan.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 6, 1 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.2, 1 ),
+"update": 0,
+"values": [ Vector2( 64, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "hit"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.2, 1 ),
+"update": 0,
+"values": [ Vector2( -64, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 6, 1 ), Vector2( 7, 1 ), Vector2( 8, 1 ), Vector2( 7, 1 ), Vector2( 6, 1 ) ]
+}
+
+[node name="Player" type="Node2D"]
+position = Vector2( 640, 440 )
+script = ExtResource( 1 )
+playable = true
+
+[node name="Actor" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, 0 )
+
+[node name="AnimationPlayer" parent="Actor" index="0"]
+autoplay = "idle"
+anims/RESET = SubResource( 3 )
+anims/attack = SubResource( 1 )
+anims/hit = SubResource( 4 )
+anims/idle = SubResource( 2 )
+next/attack = "idle"
+next/hit = "idle"
+
+[node name="Sprite" type="Sprite" parent="Actor/Graphics" index="0"]
+position = Vector2( 0, -104 )
+texture = ExtResource( 6 )
+hframes = 9
+vframes = 6
+frame = 15
+
+[node name="Intent" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Intent"]
+position = Vector2( 0, -180 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="Value" type="Label" parent="Intent"]
+margin_left = -60.0
+margin_top = -170.0
+margin_right = -10.0
+margin_bottom = -155.0
+text = "999"
+align = 2
+valign = 1
+
+[node name="Stats" type="Node2D" parent="."]
+position = Vector2( 0, -40 )
+script = ExtResource( 4 )
+
+[node name="BlockBar" type="Label" parent="Stats"]
+margin_left = -88.0
+margin_top = 8.0
+margin_right = -40.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 24, 8 )
+custom_colors/font_color = Color( 0.0313726, 0.717647, 1, 1 )
+text = "999"
+align = 1
+valign = 1
+
+[node name="HealthBar" type="Label" parent="Stats"]
+margin_left = -64.0
+margin_top = 8.0
+margin_right = 64.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 16 )
+text = "9999/9999"
+align = 1
+valign = 1
+
+[node name="Name" type="Label" parent="Stats"]
+margin_left = -64.0
+margin_top = 24.0
+margin_right = 64.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 16 )
+text = "Character"
+align = 1
+valign = 1
+
+[editable path="Actor"]
