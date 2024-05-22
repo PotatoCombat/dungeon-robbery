@@ -10,54 +10,187 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
+"class": "Action",
+"language": "GDScript",
+"path": "res://scripts/actions/Action.gd"
+}, {
+"base": "Node",
+"class": "ActionManager",
+"language": "GDScript",
+"path": "res://scripts/managers/ActionManager.gd"
+}, {
+"base": "Node2D",
+"class": "Actor",
+"language": "GDScript",
+"path": "res://scripts/actors/Actor.gd"
+}, {
+"base": "Action",
+"class": "AddBlockAction",
+"language": "GDScript",
+"path": "res://scripts/actions/AddBlockAction.gd"
+}, {
+"base": "Action",
+"class": "AnimateAction",
+"language": "GDScript",
+"path": "res://scripts/actions/AnimateAction.gd"
+}, {
+"base": "Label",
+"class": "Banner",
+"language": "GDScript",
+"path": "res://scripts/vfx/Banner.gd"
+}, {
+"base": "Action",
+"class": "BannerAction",
+"language": "GDScript",
+"path": "res://scripts/actions/BannerAction.gd"
+}, {
+"base": "Node",
 "class": "Battle",
 "language": "GDScript",
-"path": "res://Battle.gd"
+"path": "res://scripts/rooms/Battle.gd"
+}, {
+"base": "Node",
+"class": "BattleManager",
+"language": "GDScript",
+"path": "res://scripts/managers/BattleManager.gd"
+}, {
+"base": "Node2D",
+"class": "Battler",
+"language": "GDScript",
+"path": "res://scripts/battlers/Battler.gd"
+}, {
+"base": "Area2D",
+"class": "Button2D",
+"language": "GDScript",
+"path": "res://scripts/ui/Button2D.gd"
 }, {
 "base": "Control",
 "class": "Card",
 "language": "GDScript",
-"path": "res://Card.gd"
+"path": "res://scripts/cards/Card.gd"
 }, {
-"base": "Node2D",
-"class": "Enemy",
+"base": "Reference",
+"class": "CardInfo",
 "language": "GDScript",
-"path": "res://Enemy.gd"
+"path": "res://scripts/cards/CardInfo.gd"
+}, {
+"base": "Action",
+"class": "DamageAction",
+"language": "GDScript",
+"path": "res://scripts/actions/DamageAction.gd"
+}, {
+"base": "Action",
+"class": "DamageRandomAction",
+"language": "GDScript",
+"path": "res://scripts/actions/DamageRandomAction.gd"
+}, {
+"base": "Action",
+"class": "DebugAction",
+"language": "GDScript",
+"path": "res://scripts/actions/DebugAction.gd"
+}, {
+"base": "Reference",
+"class": "Decision",
+"language": "GDScript",
+"path": "res://scripts/battlers/components/Decision.gd"
+}, {
+"base": "Action",
+"class": "EndTurnAction",
+"language": "GDScript",
+"path": "res://scripts/actions/EndTurnAction.gd"
 }, {
 "base": "Control",
 "class": "Hand",
 "language": "GDScript",
-"path": "res://Hand.gd"
-}, {
-"base": "Label",
-"class": "Intent",
-"language": "GDScript",
-"path": "res://Intent.gd"
+"path": "res://scripts/cards/Hand.gd"
 }, {
 "base": "Node2D",
+"class": "Intent",
+"language": "GDScript",
+"path": "res://scripts/battlers/components/Intent.gd"
+}, {
+"base": "Action",
+"class": "LoseBattleAction",
+"language": "GDScript",
+"path": "res://scripts/actions/LoseBattleAction.gd"
+}, {
+"base": "Reference",
+"class": "Move",
+"language": "GDScript",
+"path": "res://scripts/battlers/components/Move.gd"
+}, {
+"base": "Battler",
 "class": "Player",
 "language": "GDScript",
-"path": "res://Player.gd"
+"path": "res://scripts/battlers/Player.gd"
+}, {
+"base": "Battler",
+"class": "Slime",
+"language": "GDScript",
+"path": "res://scripts/battlers/Slime.gd"
+}, {
+"base": "Node2D",
+"class": "Stats",
+"language": "GDScript",
+"path": "res://scripts/battlers/components/Stats.gd"
+}, {
+"base": "Node",
+"class": "VfxManager",
+"language": "GDScript",
+"path": "res://scripts/managers/VfxManager.gd"
+}, {
+"base": "Action",
+"class": "WaitAction",
+"language": "GDScript",
+"path": "res://scripts/actions/WaitAction.gd"
+}, {
+"base": "Action",
+"class": "WinBattleAction",
+"language": "GDScript",
+"path": "res://scripts/actions/WinBattleAction.gd"
 } ]
 _global_script_class_icons={
+"Action": "",
+"ActionManager": "",
+"Actor": "",
+"AddBlockAction": "",
+"AnimateAction": "",
+"Banner": "",
+"BannerAction": "",
 "Battle": "",
+"BattleManager": "",
+"Battler": "",
+"Button2D": "",
 "Card": "",
-"Enemy": "",
+"CardInfo": "",
+"DamageAction": "",
+"DamageRandomAction": "",
+"DebugAction": "",
+"Decision": "",
+"EndTurnAction": "",
 "Hand": "",
 "Intent": "",
-"Player": ""
+"LoseBattleAction": "",
+"Move": "",
+"Player": "",
+"Slime": "",
+"Stats": "",
+"VfxManager": "",
+"WaitAction": "",
+"WinBattleAction": ""
 }
 
 [application]
 
 config/name="Dungeon Robbery"
-run/main_scene="res://Battle.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://scripts/rooms/Battle.tscn"
+config/icon="res://images/misc/icon.png"
 
 [autoload]
 
-Game="*res://Game.gd"
-Cursor="*res://Cursor.tscn"
+Cursor="*res://scripts/Cursor.tscn"
+Game="*res://scripts/Game.tscn"
+Debug="*res://scripts/Debug.tscn"
 
 [debug]
 
