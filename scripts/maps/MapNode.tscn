@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://images/maps/spritesheet_retina.png" type="Texture" id=1]
+[ext_resource path="res://images/maps/dotted_line.png" type="Texture" id=2]
+[ext_resource path="res://scripts/maps/MapNode.gd" type="Script" id=3]
+[ext_resource path="res://scripts/ui/Button2D.gd" type="Script" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 32.0
+
+[node name="MapNode" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Icon" type="Sprite" parent="."]
+position = Vector2( 0, -48 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+hframes = 10
+vframes = 10
+frame = 19
+
+[node name="Node" type="Sprite" parent="."]
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 1 )
+hframes = 10
+vframes = 10
+frame = 66
+
+[node name="Path" type="Line2D" parent="."]
+visible = false
+position = Vector2( 1, 1 )
+points = PoolVector2Array( 0, 0, 50, 0 )
+width = 4.0
+default_color = Color( 0.329412, 0.239216, 0.141176, 1 )
+texture = ExtResource( 2 )
+texture_mode = 1
+
+[node name="Label" type="Label" parent="."]
+margin_left = 20.0
+margin_top = -6.0
+margin_right = 81.0
+margin_bottom = 10.0
+rect_min_size = Vector2( 0, 16 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "MapNode"
+
+[node name="Button2D" type="Area2D" parent="."]
+z_index = 1
+monitoring = false
+monitorable = false
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Button2D"]
+shape = SubResource( 1 )
