@@ -5,6 +5,7 @@ var rng: RandomNumberGenerator
 
 var actions: ActionManager
 var battle: BattleManager
+var screen: ScreenManager
 var vfx: VfxManager
 #var hand: Hand
 
@@ -16,4 +17,5 @@ func _ready():
 
 	actions = $Actions
 	battle = $Battle
+	screen = $Screen
 	vfx = $Vfx
