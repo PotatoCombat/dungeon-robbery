@@ -92,7 +92,7 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "Decision",
 "language": "GDScript",
-"path": "res://scripts/battlers/components/Decision.gd"
+"path": "res://scripts/utilities/Decision.gd"
 }, {
 "base": "Action",
 "class": "EndTurnAction",
@@ -109,10 +109,35 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/battlers/components/Intent.gd"
 }, {
+"base": "Node",
+"class": "Level",
+"language": "GDScript",
+"path": "res://scripts/maps/Level.gd"
+}, {
 "base": "Action",
 "class": "LoseBattleAction",
 "language": "GDScript",
 "path": "res://scripts/actions/LoseBattleAction.gd"
+}, {
+"base": "Control",
+"class": "Map",
+"language": "GDScript",
+"path": "res://scripts/maps/Map.gd"
+}, {
+"base": "Node2D",
+"class": "MapMarker",
+"language": "GDScript",
+"path": "res://scripts/maps/MapMarker.gd"
+}, {
+"base": "Node2D",
+"class": "MapNode",
+"language": "GDScript",
+"path": "res://scripts/maps/MapNode.gd"
+}, {
+"base": "Line2D",
+"class": "MapPath",
+"language": "GDScript",
+"path": "res://scripts/maps/MapPath.gd"
 }, {
 "base": "Reference",
 "class": "Move",
@@ -170,7 +195,12 @@ _global_script_class_icons={
 "EndTurnAction": "",
 "Hand": "",
 "Intent": "",
+"Level": "",
 "LoseBattleAction": "",
+"Map": "",
+"MapMarker": "",
+"MapNode": "",
+"MapPath": "",
 "Move": "",
 "Player": "",
 "Slime": "",
@@ -205,10 +235,15 @@ window/size/resizable=false
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
 
+[editor_plugins]
+
+enabled=PoolStringArray(  )
+
 [global]
 
 mouse=false
 collisio=false
+text=false
 
 [gui]
 

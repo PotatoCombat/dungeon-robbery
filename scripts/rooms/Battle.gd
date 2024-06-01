@@ -23,6 +23,9 @@ var state = State.NONE
 
 var battler_queue = []
 
+var selected_card: Card
+var selected_targets: Array
+
 
 func _to_string():
 	return "Battle"
@@ -33,7 +36,7 @@ func _ready():
 #	$UI/Hand.connect("card_played", self, "select_card")
 	$UI/EndTurnBtn.connect("pressed", self, "finish_input")
 
-	load_battle()
+#	load_battle()
 
 func _physics_process(_delta: float) -> void:
 	var next_state = get_next_state()
@@ -128,6 +131,7 @@ func finish_input():
 		enter_state(State.PLAYER_NEXT)
 
 func start_battle():
+	Game.actions.set_awaiting_input(false)
 	Game.battle.set_turn(0)
 	for user in Game.battle.get_battlers():
 		user.init_powers()

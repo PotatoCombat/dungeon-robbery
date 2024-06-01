@@ -73,9 +73,11 @@ func _release():
 	rotate(click_rotation)
 	if not target:
 		return
-	var parent = target.get_parent()
-	if parent.has_signal("released"):
-		parent.emit_signal("released")
+	var node = target
+	while node and not node.has_signal("released"):
+		node = node.get_parent()
+	if node:
+		node.emit_signal("released")
 
 func _exit(node: CollisionObject2D):
 	var parent = node.get_parent()
